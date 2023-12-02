@@ -1,0 +1,76 @@
+<div class="list row">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nhập tiêu đề"
+        [(ngModel)]="tenphongban"
+      />
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Tuổi"
+        [(ngModel)]="tuoi"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="searchTitle()">
+          Tìm kiếm
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h4>Danh sách</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Mã nhân viên</th>
+          <th scope="col">Tên nhân viên</th>
+          <th scope="col">Tên phòng ban</th>
+          <th scope="col">Giới tính</th>
+          <th scope="col">Tuổi</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody
+        *ngFor="let item of nhanvien; let i = index"
+        [class.active]="i == currentIndex"
+      >
+        <tr>
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.manv }}</td>
+          <td>{{ item.tennhanvien }}</td>
+          <td>{{ item.tenphongban }}</td>
+
+          <td *ngIf="item.gioitinh == 0; else checkGT">Nữ</td>
+          <ng-template #checkGT>
+            <td>Nam</td>
+          </ng-template>
+
+          <td>{{ item.tuoi }}</td>
+          <!-- <td *ngIf="item.tuoi > 55; else checkTuoi" class="text-danger">
+            {{ item.tuoi }}
+          </td>
+          <ng-template #checkTuoi>
+            <td>{{ item.tuoi }}</td>
+          </ng-template> -->
+
+          <a
+            class="m-3 btn btn-sm btn-primary"
+            routerLink="/nhanvien/{{ item.id }}"
+            >Sửa</a
+          >
+
+          <button class="m-3 btn btn-sm btn-danger" (click)="deleteNV(item.id)">
+            Xoá
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="m-3 btn btn-sm btn-danger btn-block" (click)="removeAllData()">
+    Xoá tất cả
+  </button>
+</div>

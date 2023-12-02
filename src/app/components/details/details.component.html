@@ -1,0 +1,97 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="current.id">
+      <div>
+        <label><strong>MANV:</strong></label> {{ current.manv }}
+      </div>
+      <div>
+        <label><strong>Ten:</strong></label> {{ current.tennhanvien }}
+      </div>
+      <div>
+        <label><strong>Phong</strong></label>
+        {{ current.tenphongban }}
+      </div>
+      <div>
+        <label><strong>GT:</strong></label> {{ current.gioitinh }}
+      </div>
+      <div>
+        <label><strong>Tuoi:</strong></label>
+        {{ current.tuoi }}
+      </div>
+      <a
+        class="badge badge-warning"
+        routerLink="/diemkhoan/{{ current.id }}"
+      >
+        Chỉnh sửa
+      </a>
+    </div>
+    <div *ngIf="!current">
+      <br />
+      <p>Please click on a Diemkhoan...</p>
+    </div>
+  </div>
+  <ng-template #editable>
+    <div *ngIf="current.id" class="edit-form">
+      <h4>Chi tiết dữ liệu điểm khoan</h4>
+      <form>
+        <div class="form-group">
+          <label for="diadanh">Ma</label>
+          <input
+            type="text"
+            class="form-control"
+            id="diadanh"
+            [(ngModel)]="current.manv"
+            name="diadanh"
+          />
+        </div>
+        <div class="form-group">
+          <label for="dosau">Ten</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dosau"
+            [(ngModel)]="current.tennhanvien"
+            name="dosau"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ngaykhoan">Phong</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ngaykhoan"
+            [(ngModel)]="current.tenphongban"
+            name="ngaykhoan"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tendiem">Gioitinh</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tendiem"
+            [(ngModel)]="current.gioitinh"
+            name="tendiem"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tennguoikhoan">Tuoi</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tennguoikhoan"
+            [(ngModel)]="current.tuoi"
+            name="tennguoikhoan"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary btn-block mb-2"
+          (click)="updateDiemkhoan()"
+        >
+          Cập nhật
+        </button>
+        <h4>{{ message }}</h4>
+      </form>
+    </div>
+  </ng-template>
+  

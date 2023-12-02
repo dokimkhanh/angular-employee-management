@@ -1,0 +1,69 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="diadanh">Mã NV</label>
+          <input
+            type="text"
+            class="form-control"
+            id="diadanh"
+            required
+            [(ngModel)]="model.manv"
+            name="diadanh"
+          />
+        </div>
+        <div class="form-group">
+          <label for="dosau">Tên NV</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dosau"
+            required
+            [(ngModel)]="model.tennhanvien"
+            name="dosau"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ngaykhoan">Tên phòng</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ngaykhoan"
+            required
+            [(ngModel)]="model.tenphongban"
+            name="ngaykhoan"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tendiem">Giới tinh</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tendiem"
+            required
+            [(ngModel)]="model.gioitinh"
+            name="tendiem"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tennguoikhoan">Tuổi</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tennguoikhoan"
+            required
+            [(ngModel)]="model.tuoi"
+            name="tennguoikhoan"
+          />
+        </div>
+        <button (click)="saveData()" class="btn btn-success btn-block">Thêm mới</button>
+      </div>
+      <div *ngIf="submitted">
+        <h4>Nhân viên đã được thêm thành công!</h4>
+        <button class="btn btn-success" (click)="newDiemkhoan()">
+          Thêm mới
+        </button>
+      </div>
+    </div>
+  </div>
+  
